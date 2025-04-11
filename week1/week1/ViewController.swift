@@ -1,19 +1,16 @@
-//
-//  ViewController.swift
-//  week1
-//
-//  Created by APPLE on 4/11/25.
-//
-
 import UIKit
 
 class ViewController: UIViewController {
 
+    private var testView: UIView = UIView(frame: .init(origin: .init(x: 100, y: 100),
+                                                       size: .init(width: 150, height: 150)))
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        self.view.backgroundColor = .white
+        testView.backgroundColor = .magenta
+        
+        self.view.addSubview(testView)
     }
-
-
 }
-
