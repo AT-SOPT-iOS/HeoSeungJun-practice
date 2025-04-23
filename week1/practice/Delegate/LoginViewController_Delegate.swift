@@ -1,6 +1,10 @@
 import UIKit
 
-class LoginViewController: UIViewController {
+class LoginViewController_Delegate: UIViewController, DataBindDelegate {
+    
+    func dataBind(id: String) {
+        passwordTextField.text = id
+    }
     
     private let titleLabel: UILabel = {
         // 생성자에서 CGRect 타입의 frame 속성을 지정할 수 있다
@@ -57,12 +61,12 @@ class LoginViewController: UIViewController {
     
     @objc
     private func loginButtonDidTapped() {
-        presentToWelcomeVC()
-        //pushToWelcomeVC()
+        //presentToWelcomeVC()
+        pushToWelcomeVC()
     }
     
     private func presentToWelcomeVC() {
-        let welcomeViewController = WelcomeViewController()
+        let welcomeViewController = WelcomeViewController_Delegate()
         welcomeViewController.modalPresentationStyle = .formSheet
         
         //welcomeViewController.id = idTextField.text
@@ -74,9 +78,10 @@ class LoginViewController: UIViewController {
     }
     
     private func pushToWelcomeVC() {
-        let welcomeViewController = WelcomeViewController()
+        let welcomeViewController = WelcomeViewController_Delegate()
         
         //welcomeViewController.id = idTextField.text
+        welcomeViewController.delegate = self
         welcomeViewController.setLabelText(id: idTextField.text)
         
         // pushViewController : 내비게이션 스택에 새로운 뷰 컨트롤러(WelcomeViewController)를 push
