@@ -8,12 +8,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
-        let scrollViewController = ScrollViewController()
-//        let loginView = LoginViewController_Closure()
-        //let navigationController = UINavigationController(rootViewController: scrollViewController)
+        let viewController = ItemViewController()
         
         let window = UIWindow(windowScene: windowScene)
-        window.rootViewController = scrollViewController
+        window.rootViewController = viewController
         window.makeKeyAndVisible()
         self.window = window
     }
