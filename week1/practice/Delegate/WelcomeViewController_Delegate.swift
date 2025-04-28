@@ -1,7 +1,12 @@
 import UIKit
 
-class WelcomeViewController: UIViewController {
+protocol DataBindDelegate: AnyObject {    // AnyObject를 상속한 프로토콜은 클래스만 채택 가능
+    func dataBind(id: String)
+}
+
+class WelcomeViewController_Delegate: UIViewController {
     
+    weak var delegate: DataBindDelegate?
     var id: String?
     
     private let imageView: UIImageView = {
@@ -48,6 +53,10 @@ class WelcomeViewController: UIViewController {
     // 셀렉터 문법은 Objective-C부터 사용하던 문법으로, @objc 키워드를 붙여야 함
     @objc
     private func backToLoginButtonDidTapped() {
+        if let id = id {
+            delegate?.dataBind(id: id)
+        }
+        
         // 모달로 전환된 경우 (= 내비게이션 스택에 push되지 않은 경우)
         if self.navigationController == nil {
             // dismiss 메서드로 현재 화면을 닫음
